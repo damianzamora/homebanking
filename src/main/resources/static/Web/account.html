@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking - Detalle</title>
+</head>
+<body class="container" id="app">
+    <header>
+            <div class="headerIndex d-flex ">
+                    <div class="header1">
+                        <img src="img/logoBanco1.jpg">
+                    </div>
+                    <div class="header2 d-flex justify-content-end">
+                        <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                    </div>             
+            </div>               
+    </header> 
+    <main >
+            <div class="indexAccounts">
+                <div class="seccion1">
+                    <div class="divAccouns1">
+                    <h4>Numero de Cuenta {{account.number}}</h4>
+                    </div>   
+                    <div class="divAccouns2 d-flex justify-content-end">
+                    <h5>Cuenta de tipo {{account.tipoCuenta}}</h5>
+                    </div>
+                </div>
+            </div>      
+            <div class="seccion2">    
+                <div class="seccion2Nav">
+                    <nav class="nav1 ">
+                        <a class="nav-link active text-white navbar-brand mb-0 h1" href="accounts.html">Cuentas</a>
+                        <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                        <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>
+                        <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                        <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                        
+                    </nav>
+                </div>  
+            </div>  
+            <div class="crearAccount d-flex justify-content-end">
+                <a class="text-white " href="accounts.html"><button class="btn btn-secondary btn-sm ">Volver</button></a>            
+            </div>
+                <div class="divTable">
+                    <template v-if="transacciones.length > 0" >
+                    <table class="table table-striped">
+                        <thead>
+                                <tr>
+                                    <th class="text-center">Tipo</th>
+                                    <th class="text-center" >Fecha</th>
+                                    <th class="text-center">Monto</th>
+                                    <th class="text-center">Balance posterior</th>
+                                    <th class="text-center">Descripcion</th>                                    
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr v-for="transacciones in orderByID" :class="[transacciones.type == 'DEBITO' ? 'red' : 'green']" >
+                                    <td data-label="Tipo"class="text-center">{{transacciones.type}}</td>
+                                    <td data-label="Fecha"class="text-center">{{formatDate(transacciones.creationDate)}}</td>
+                                    <td data-label="Monto"class="text-center">${{transacciones.amount}}</td>
+                                    <td data-label="Balance posterior"class="text-center">${{transacciones.balanceTransac}}</td>
+                                    <td data-label="Descripcion"class="text-center">{{transacciones.description}}</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    </template>
+                    <template v-else>
+                        <div class="divCards d-flex flex-column align-items-center">
+                            <div class="text-center"><h3>No se han registrado movimientos</h3></div>                                       
+                        </div>    
+                    </template>
+                </div>
+        
+        </main>
+        <footer>    
+            <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>

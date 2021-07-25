@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Home Banking - Préstamos</title>
+    </head>
+    <body class="container" id="app">
+        <header>
+                    <div class="headerIndex d-flex ">
+                        <div class="header1">
+                            <img src="img/logoBanco1.jpg">
+                        </div>
+                        <div class="header2 d-flex justify-content-end">
+                            <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                        </div>             
+                    </div> 
+        </header>     
+        <main >
+            <div class="indexAccounts">  
+                <div class="seccion1">
+                    <div class="divAccouns1">
+                    <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                    </div>   
+                    <div class="divAccouns2 d-flex justify-content-end">
+                    <span>{{cliente.email}}</span>
+                    </div>
+                </div>
+            </div>      
+            <div class="seccion2">    
+                <div class="seccion2Nav">
+                    <nav class="nav1 ">
+                        <a class="nav-link active text-white" href="accounts.html" >Cuentas</a>
+                        <a class="nav-link disabled text-white navbar-brand mb-0 h1" href="prestamos.html">Préstamos</a>
+                        <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                                    
+                        <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                        <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                    </nav>
+                </div> 
+            </div>  
+                      
+             
+            <div class="row">         
+                    <div class="col sm-12">
+                        <div class="crearPrestamo d-flex justify-content-end">
+                            <a class="text-white " href="create-loans.html"><button class="btn btn-secondary btn-sm ">Crear Préstamo</button></a>
+                            <a class="text-white " href="loan-application.html"><button class="btn btn-secondary btn-sm ">Pedir Préstamo</button></a>       
+                        </div> 
+                                <div class="divTable">
+                                    <template v-if="loans.length > 0" >
+                                        <table class="table table-striped">
+                                            <thead >                                                
+                                                    <tr>
+                                                        <th class="text-center">Tipo de préstamo</th>
+                                                        <th class="text-center">Monto pedido</th>
+                                                        <th class="text-center">Interés aplicado</th>
+                                                        <th class="text-center">Monto final</th>
+                                                        <th class="text-center">Cuotas</th>
+                                                        <th class="text-center">Cuenta destino</th>                                                    
+                                                    </tr>                                                   
+                                            </thead>
+                                            <tbody>                                                
+                                                <tr v-for="loan in loans">                                                         
+                                                        <td data-label="Tipo de préstamo" class=" text-center">{{loan.name}}</td>
+                                                        <td data-label="Monto pedido" class=" text-center">${{loan.amountInicial}}</td>
+                                                        <td data-label="Interés aplicado" class=" text-center">{{loan.porcent}}%</td>
+                                                        <td data-label="Monto final" class=" text-center">${{loan.amountFinal}}</td>
+                                                        <td data-label="Cuotas" class=" text-center">{{loan.payments}}</td>
+                                                        <td data-label="Cuenta destino" class=" text-center">{{loan.accountNumber}}</td>
+                                                    </tr>
+                                            </tbody>
+                                    </template>
+                                        <template v-else>
+                                            <div class="divCards d-flex flex-column align-items-center">
+                                                <div class="text-center"><h3>No tienes préstamos para mostrar.</h3></div>
+                                                <div class="text-center"><h5>pero puedes pedir uno desde <a href="loan-application.html">aquí</a>.</h5></div>
+                                            </div>    
+                                        </template>                                            
+                                        </table>
+                                </div>                       
+        </main>
+        <footer>           
+            <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="js/accounts.js"></script>
+    </body>
+    </html>

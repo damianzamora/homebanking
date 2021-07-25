@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking - Pagos</title>
+</head>
+<body class="container" id="app" >
+    <header>
+                <div class="headerIndex d-flex ">
+                    <div class="header1">
+                        <img src="img/logoBanco1.jpg">
+                    </div>
+                    <div class="header2 d-flex justify-content-end">
+                        <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                    </div>             
+                </div>
+        </header>    
+    <main >  
+        <div class="indexAccounts">
+            <div class="seccion1">
+                <div class="divAccouns1">
+                <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                </div>   
+                <div class="divAccouns2 d-flex justify-content-end">
+                <span>{{cliente.email}}</span>
+                </div>
+            </div>
+            
+        </div>      
+        <div class="seccion2">    
+            <div class="seccion2Nav">
+                <nav class="nav1 ">
+                    <a class="nav-link disabled text-white" href="accounts.html" >Cuentas</a>
+                    <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                    <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                                
+                    <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                    <a class="nav-link disabled text-white navbar-brand mb-0 h1 " href="pagos.html">Pagos</a>
+                </nav>
+            </div> 
+        </div>  
+        <div class="bottonVolver d-flex justify-content-end">
+            <a class="text-white " href="pagos.html"><button class="btn btn-secondary btn-sm ">Volver</button></a>
+        </div>
+                <div class="cont"> 
+                                                               
+                            
+                    
+                            <div class="divCreateCard">
+                                <div class="CreateCard">
+                                    <form @submit.prevent="realizarPago">
+                                        <div class="text-center" >                                            
+                                            <select class="inputPrestamo" v-model="tarjetaSeleccionada">   
+                                                <option  value="">Tarjetas</option>
+                                                <option v-for="card in cards">{{card.cardNumber}}</option>
+                                            </select>
+                                            <div class="text-center" v-if="tarjetaSeleccionada">
+                                            <label>{{seleccionada(tarjetaSeleccionada)}}</label>
+                                            </div>
+                                            <div class="text-center" >
+                                                <input v-model="amount" type="number" id="amount" name="amount" placeholder="Monto" required min="1" max="1000000">
+                                            </div>
+                                            <div class="text-center" >
+                                                <input v-model="cvv" type="number" id="cvv" name="cvv" placeholder="cvv" required min="100" max="999" >
+                                            </div>
+                                        
+                                            <div class="text-center" >
+                                                <input class="inputPrestamo" v-model="descriptionCard" type="text"
+                                                 id="descriptionCard" name="descriptionCard" placeholder="Descripcion" required maxlength="20">
+                                            </div> 
+                                           
+                                        </div>
+                                            <div class="text-center">
+                                                <button class="btn btn-secondary btn-sm "  type="submit" >Pagar</button> 
+                                            </div>                                    
+
+                                    </form>
+                                </div>
+                            </div>
+                </div>  
+    </main>
+    <footer>
+         <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/create-pagos.js"></script>
+</body>
+</html>

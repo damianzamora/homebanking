@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking - Transferencias</title>
+</head>
+<body class="container" id="app">
+    <header>      
+            <div class="headerIndex d-flex ">
+                <div class="header1">
+                    <img src="img/logoBanco1.jpg">
+                </div>
+                <div class="header2 d-flex justify-content-end">
+                    <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                </div>             
+            </div>              
+    </header> 
+    <main >    
+            <div class="indexAccounts">
+                <div class="seccion1">
+                    <div class="divAccouns1">
+                    <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                    </div>   
+                    <div class="divAccouns2 d-flex justify-content-end">
+                    <span>{{cliente.email}}</span>
+                    </div>
+                </div>                   
+            </div>         
+            <div class="seccion2">    
+                <div class="seccion2Nav">
+                    <nav class="nav1 ">
+                        <a class="nav-link disabled text-white" href="accounts.html" >Cuentas</a>
+                        <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                        <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                                
+                        <a class="nav-link active text-white navbar-brand mb-0 h1 " href="transfers.html">Transferencias</a>
+                        <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                    </nav>
+                </div> 
+            </div>  
+            <div class="bottonVolver d-flex justify-content-end">
+                <a class="text-white " href="accounts.html"><button class="btn btn-secondary btn-sm ">Cuentas</button></a>                       
+            </div> 
+                    <div class="mainTransfer">
+                                
+                        <form @submit.prevent="CrearTransferencia">
+                                <div class="text-center" >
+                                    <h4>¿A dónde querés transferir?</h4>
+                                </div>
+                                <div class="botontipoTrans">                                                                                                
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-info">
+                                    <input type="radio" class="btn-check"  value="ctaPropia" v-model="tipoTransferencia"  autocomplete="off" >
+                                        Cuenta propia
+                                    </label>
+                                </div>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">   
+                                    <label class="btn btn-info">
+                                    <input type="radio" class="btn-check"  value="ctaTerceros" v-model="tipoTransferencia"  autocomplete="off" >
+                                    Cuenta de terceros
+                                    </label>
+                                </div>                                                 
+                            </div>                                                                                                
+                                                            
+                                <div v-show="tipoTransferencia === 'ctaPropia'">
+                                    <div class="text-center" >
+                                        <label for="state">Cuenta de Origen</label>
+                                        <select v-model="cuentaOrigen">   
+                                            <option value="">-</option>
+                                            <option v-for="cuenta in arrayAccounts">{{cuenta.number}}</option>
+                                        </select>
+                                        <div v-if="cuentaOrigen" >
+                                            <label> Saldo disponible en cuenta: ${{saldo(cuentaOrigen)}} </label>
+                                        </div>
+                                    </div>   
+                                    <div class="text-center" >
+                                        <label for="state">Cuenta destino</label>
+                                        <select v-model="cuentaDestino">   
+                                            <option value="">-</option>
+                                            <option v-for="cuenta in arrayAccounts">{{cuenta.number}}</option>
+                                        </select>
+                                    </div>  
+                                    <div class="text-center" >
+                                        <input class="inputPrestamo" v-model="amount" type="number"
+                                         id="amount" name="amount" placeholder="Monto a transferir" required min="1" max="10000000">
+                                    </div>
+                                    <div class="text-center" >
+                                        <input class="inputPrestamo" v-model="description" type="text" id="description"
+                                         name="description" placeholder="Descripcion" required maxlength="20">
+                                    </div>
+                                </div>
+                                <div v-show="tipoTransferencia === 'ctaTerceros'">
+                                    <div class="text-center" >
+                                        <label for="state">Cuenta de Origen</label>
+                                        <select v-model="cuentaOrigen">   
+                                            <option value="">-</option>
+                                            <option v-for="cuenta in arrayAccounts">{{cuenta.number}}</option>
+                                        </select>
+                                        <div v-if="cuentaOrigen" >
+                                            <label> Saldo disponible en cuenta: ${{saldo(cuentaOrigen)}} </label>
+                                        </div>
+                                    </div>   
+                                    <div class="text-center" >
+                                        <input class="inputPrestamo" v-model="cuentaDestino" type="text"
+                                         id="cuentaDestino" name="cuentaDestino" placeholder="Cuenta Destino" required maxlength="20">
+                                    </div>
+                                    <div class="text-center" >
+                                        <input class="inputPrestamo" v-model="amount" type="number"
+                                         id="amount" name="amount" placeholder="Monto a transferir" required min="1" max="10000000" >
+                                    </div>
+                                    <div class="text-center" >
+                                        <input class="inputPrestamo" v-model="description" type="text"
+                                         id="description" name="description" placeholder="Descripcion" required maxlength="20">
+                                    </div>
+                                </div>                                            
+                                <div class="text-center" v-if="amount">
+                                    <button class="btn btn-secondary btn-sm " type="submit">Crear transferencia</button> 
+                                </div>                                 
+                        </form>                                
+                    </div>
+    </main>
+    <footer>
+        <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/transfer.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Home Banking - Tarjetas</title>
+    </head>
+    <body class="container" id="app">
+        <header>
+                <div class="headerIndex d-flex ">
+                    <div class="header1">
+                        <img src="img/logoBanco1.jpg">
+                    </div>
+                    <div class="header2 d-flex justify-content-end">
+                        <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                    </div>             
+                </div>
+        </header> 
+        <main>
+            <div class="indexAccounts">
+                <div class="seccion1">
+                    <div class="divAccouns1">
+                    <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                    </div>   
+                    <div class="divAccouns2 d-flex justify-content-end">
+                    <span>{{cliente.email}}</span>
+                    </div>
+                </div>
+            </div>       
+            <div class="seccion2">    
+                <div class="seccion2Nav">
+                    <nav class="nav1 ">
+                        <a class="nav-link active text-white" href="accounts.html" >Cuentas</a>
+                        <a class="nav-link disabled text-white " href="prestamos.html">Préstamos</a>
+                        <a class="nav-link disabled text-white navbar-brand mb-0 h1" href="cards.html">Tarjetas</a>                                  
+                        <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                        <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                    </nav>
+                </div> 
+            </div>  
+            <div class="crearAccount d-flex justify-content-end">
+                <a class="text-white " href="create-cards.html"><button class="btn btn-secondary btn-sm ">Crear Tarjeta</button></a>
+            </div> 
+            <div class="seccionCards">         
+                        <div>
+                            <div class="CardTittle"><h3>Tarjetas de Crédito</h3></div> 
+                            <div class="divtarjetas">
+                                <template v-if="cards_credit.length > 0" >
+                                <div class="divCards d-flex flex-column align-items-center" v-for="card in cards_credit":class="[card.cardColor == 'GOLD' ? 'gold' : 'platinum']">
+                                       
+                                        <div class="card">
+                                        <div class="card__front card__part " >
+                                            <img class="card__front-square card__square" src="img/logo-The-World-Bank-tarjeta.jpg">
+                                            <img class="card__front-logo card__logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MasterCard_logo.png/320px-MasterCard_logo.png">
+                                            <p class="card_numer">{{card.cardNumber}}</p>
+                                            <div class="card__space-75">
+                                            <span class="card__label">Credit Card holder</span>
+                                            <p class="card__info">{{card.cardHolder}}</p>
+                                            </div>
+                                            <div class="card__space-25">
+                                            <span class="card__label">Expires</span>
+                                                    <template v-if="card.thruDate > card.fromDate">
+                                                    <p class="card__info ">{{formatDate(card.thruDate)}}</p>
+                                                    </template>
+                                                    <template v-else>
+                                                        <p class="card__info bg-danger text-white">{{formatDate(card.thruDate)}}</p>
+                                                    </template>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card__back card__part">
+                                            <div class="card__black-line"></div>
+                                            <div class="card__back-content">
+                                            <div class="card__secret">
+                                                <p class="card__secret--last">{{card.cvv}}</p>
+                                            </div>
+                                            <img class="card__back-square card__square" src="img/logo-The-World-Bank-tarjeta.jpg">
+                                            <img class="card__back-logo card__logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MasterCard_logo.png/320px-MasterCard_logo.png">
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center ">
+                                            <button class="btn btn-secondary btn-sm h-25" type="button"   @click="EliminarTarjeta(card)">Dar de baja</button> 
+                                        </div>
+                                    
+                                </div>
+                                </template>
+                                <template v-else>
+                                    <div class="divCards d-flex flex-column align-items-center">
+                                        <p>No tienes Tarjetas de Crédito asignadas.</p>
+                                        
+                                        <p>Solicítala <a href="create-cards.html">aquí</a> </p>
+                                    
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                            <div>
+                            <div class="CardTittle"><h3>Tarjetas de Débito</h3></div> 
+                            <div class="divtarjetas">
+                                <template v-if="cards_debit.length > 0" >
+                                <div class="divCards d-flex flex-column align-items-center" v-for="card in cards_debit" :class="[card.cardColor == 'GOLD' ? 'gold' :  'platinum']">
+                                        <div class="card">
+                                        <div class="card__front card__part">
+                                            <img class="card__front-square card__square" src="img/logo-The-World-Bank-tarjeta.jpg">
+                                            
+                                            <img class="card__front-logo card__logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MasterCard_logo.png/320px-MasterCard_logo.png">
+                                            <p class="card_numer">{{card.cardNumber}}</p>
+                                            <div class="card__space-75">
+                                            <span class="card__label">Debit Card holder</span>
+                                            <p class="card__info">{{card.cardHolder}}</p>
+                                            </div>
+                                            <div class="card__space-25">
+                                            <span class="card__label">Expires</span>
+                                            <template v-if="card.thruDate > card.fromDate">
+                                                <p class="card__info ">{{formatDate(card.thruDate)}}</p>
+                                                </template>
+                                                <template v-else>
+                                                    <p class="card__info text-white">{{formatDate(card.thruDate)}}</p>
+                                                    <p class="bg-danger text-white">Vencida</p>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card__back card__part">
+                                            <div class="card__black-line"></div>
+                                            <div class="card__back-content">
+                                            <div class="card__secret">
+                                                <p class="card__secret--last">{{card.cvv}}</p>
+                                            </div>
+                                            <img class="card__back-square card__square" src="img/logo-The-World-Bank-tarjeta.jpg">
+                                            <img class="card__back-logo card__logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MasterCard_logo.png/320px-MasterCard_logo.png">
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="d-flex justify-content-center ">
+                                            <button class="btn btn-secondary btn-sm h-25" type="button"   @click="EliminarTarjeta(card)">Dar de baja</button> 
+                                        </div>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <div class="divCards d-flex flex-column align-items-center">
+                                    <p>No tienes Tarjetas de Débito asignadas.</p>
+                                    <p>Solicítala <a href="create-cards.html">aquí</a></p>
+                                </div>
+                            </template>
+                            </div>  
+                    </div>   
+                </div>
+        </main>
+        <footer>
+                    <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+        </footer>
+    
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/cards.js"></script>
+    </body>
+    </html>

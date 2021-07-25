@@ -1,0 +1,643 @@
+/*///////CONFIGURACION GENERAL/////*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    
+    width: 100%!important;
+    height: 100vh!important;
+    background-color: rgb(222,210,210,255);
+    }
+
+main{
+    min-height: 75%;
+    
+    }
+    
+header{
+    height: 20%;
+}   
+
+footer{
+    width: 100%;
+    background-color: black;
+    color:white;
+    height: 5%;
+}      
+
+label{
+    border-radius: 10%;
+}
+
+form div{
+    padding: 10px;
+}
+
+form{
+    width: 100%;
+}
+
+.swal-modal {
+    width: 500px;
+    }
+
+.nav1{
+    display: flex;
+}    
+
+select{
+    text-align-last: center;
+}
+
+
+
+/*//////////////////////////////////////////////// ACCOUNTS.HTML */
+
+.header2{
+    width: 100%;
+    height: 25%;
+}
+
+.crearAccount{
+    width: 100%;
+    height: 15%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header1 img{
+    height: 100%;
+}
+
+
+
+.headerIndex{
+    height: 100%;
+}
+
+.divTable{
+    min-height: 70%;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.divCards{
+    
+    min-height: 20vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    gap:0.5rem;
+}
+.headerIndex{
+    width: 100%;
+    height: 100%;
+}
+
+
+.seccion2Nav{
+    background-color: black;
+    color: white;
+}
+
+
+
+/*////*/
+.mensaje{
+width: 100%;
+height: 20vh;
+color:red;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.CardTittle{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+.red{color:red}
+.green{color:green}
+
+
+/*///////////////// CREDIT CARD ///////////////////*/
+
+.seccionCards{
+    margin-top: 5vh;
+    max-width: 100%;
+    display: flex;
+}
+.seccionCards > div{
+    width: 50%;
+}
+
+.divtarjetas {
+    max-width: 100%;
+    
+}
+
+
+.gold .card__part{background-image: linear-gradient(to right bottom, rgb(184, 161, 34), rgb(240, 211, 45), rgb(240, 211, 45),rgb(240, 211, 45),rgb(184, 161, 34)) ;} 
+.platinum .card__part{background-image: linear-gradient(to right bottom, black,rgba(104, 100, 100, 0.411), rgba(104, 100, 100, 0.411),rgba(104, 100, 100, 0.411),black) ;} 
+.silver .card__part{background-image: linear-gradient(to right bottom, rgba(red 0.411),rgba(104, 100, 100, 0.411), rgba(104, 100, 100, 0.411),rgba(104, 100, 100, 0.411),rgba(104, 100, 100, 0.411)) ;} 
+
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
+
+
+.card{
+width: 320px;
+height: 190px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  perspective:600px;
+  background: rgba(0, 0, 0, 0)!important;
+  border: 0 !important;
+}
+
+.card__part{
+    box-shadow: 1px 1px rgb(223, 210, 210);
+    top: 0;
+    position: absolute;
+	z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 320px;
+    height: 190px;
+    background-image: linear-gradient(to right bottom, black, black, black,black,black); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+   
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.card__front{
+  padding: 18px;
+  -webkit-transform: rotateY(0);
+  -moz-transform: rotateY(0);
+}
+
+.card__back {
+  padding: 18px 0;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+}
+
+
+
+.card__black-line {
+    margin-top: 5px;
+    height: 38px;
+    background-color: #303030;
+}
+
+.card__logo {
+    height: 30px;
+}
+
+.card__front-logo{
+      position: absolute;
+    top: 18px;
+    right: 18px;
+}
+.card__square {
+    border-radius: 5px;
+    height: 30px;
+}
+
+.card_numer {
+    display: block;
+    width: 100%;
+    word-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.card__space-75 {
+    width: 75%;
+    float: left;
+}
+
+.card__space-25 {
+    width: 25%;
+    float: left;
+}
+
+.card__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+}
+
+.card__info {
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card__back-content {
+    padding: 15px 15px 0;
+}
+.card__secret--last {
+    color: #303030;
+    text-align: right;
+    margin: 0;
+    font-size: 14px;
+}
+
+.card__secret {
+    padding: 5px 12px;
+    background-color: #fff;
+    position:relative;
+}
+
+.card__secret:before{
+  content:'';
+  position: absolute;
+top: -3px;
+left: -3px;
+height: calc(100% + 6px);
+width: calc(100% - 42px);
+border-radius: 4px;
+  background: repeating-linear-gradient(45deg, #ededed, #ededed 5px, #f9f9f9 5px, #f9f9f9 10px);
+}
+
+.card__back-logo {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.card__back-square {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.card:hover .card__front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+
+}
+
+.card:hover .card__back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+}
+
+/*/////////////////////////////CREDITS_CARDS.HTML////////////////*/
+
+.divCreateCard{
+    min-height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.prestamosDisponibles{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+
+.check{
+    width: 33%!important;
+}
+
+.CreateCard{
+    width: 50%;
+    height: 50%;
+    margin-top: 1rem;
+    background-color: lightblue;
+    opacity: 0.7;
+}
+
+
+.CreateTransfer{
+    width: 70%;
+    height: 50%;
+    margin-bottom: 1rem;
+    background-color: lightblue;
+    opacity: 0.7;
+
+}
+
+.botontipoTrans{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.indexLoan{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1rem;
+    background-color: lightblue;
+    opacity: 0.8;
+    gap:1rem;
+
+}
+
+.loanseccion1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+
+/*
+/////// INDEX.HTML LOG IN - - - /////////
+*/
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+height: 100vh;
+font-family: 'Numans', sans-serif;
+
+}
+
+.container1{
+height: 100%;
+font-family: 'Numans', sans-serif;
+background-image: url('../img/worldBankFondo1.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+
+
+.cardIndex{ 
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+position: relative;
+}
+
+
+.card-header h3{
+color: white;
+}
+
+
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color:lightcyan;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+
+.check{
+    width: 50%;
+    height: 25%;
+    display: flex;   
+    justify-content: center;
+}
+
+
+
+/*////////////////PRESTAMOS.HTML/////////////*/
+
+.crearPrestamo{
+    width: 100%;
+    height: 15%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    gap:0.5rem;
+}
+
+.bottonVolver{
+    width: 100%;
+    height: 5%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    gap:0.5rem;
+}
+
+.prestamoSeccion1-2-3{
+    width: 100%;
+    display: flex;
+}
+
+.seccion1{
+    width: 100% ;
+}
+.seccion2{
+  width: 100% ;
+}
+
+.seccion3{
+  width: 100%;
+}
+
+
+.inputPrestamo{
+    width: 12rem;
+}
+
+
+/*/////TRANSFERS.HTML/////*/
+
+
+.mainTransfer{
+    min-height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom:1rem;
+    gap:1.5rem;
+    
+}
+
+.CreateTransfer{
+    width: 70%;
+    height: 50%;
+    margin-bottom: 1rem;
+    background-color: lightblue;
+    opacity: 0.9;
+}
+
+
+
+/*//////MEDIA - Responsive cards.html///// */ 
+
+.container1{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 50px) and (max-width:770px){
+    .seccionCards{
+        margin-top: 5vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .seccionCards > div{
+        width: 100%;
+    }
+    
+  /*//////MEDIA - Responsive loan-application.html///// */  
+
+
+  .prestamosDisponibles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .prestamoSeccion1-2-3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+  }
+  .seccion1{
+      width: 100% ;
+  }
+  .seccion2{
+    width: 100% ;
+}
+
+.seccion3{
+    width: 100%;
+}
+
+  
+
+  .loanseccion1{
+      display: flex;
+      flex-direction: column;
+  }
+  .crearPrestamo{
+    height: 2rem; 
+}
+
+.check{
+    padding: 0.2rem;
+    border: 0.2rem;
+}
+ 
+/*////////////////////////ACCOUNTS.HTML/////*/
+
+table {
+    width:100%;
+}
+thead {
+    display: none;
+}
+tr:nth-of-type(2n) {
+    background-color: inherit;
+}
+tr td:first-child {
+    background: lightgray;
+    font-weight:bold;
+    font-size:1.3em;
+}
+tbody td {
+    display: block;
+    text-align:center;
+}
+tbody td:before {
+    content: attr(data-th);
+    display:block;
+    text-align:center;
+}
+
+.crearAccount{
+    height: 2rem; 
+}
+
+.nav1{
+    display: flex;
+    flex-direction: column;
+}    
+
+/*/////////////////////////////CREDITS_CARDS.HTML////////////////*/
+
+.CreateCard{
+    width: 100%;
+}
+
+/*//////////////////////TRANSFERENCIAS.HTML////////////*/
+
+.botontipoTrans{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+}
+
+
+

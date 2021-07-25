@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking -Crear cuentas</title>
+</head>
+<body class="container" id="app" >
+    <header>
+            <div class="headerIndex d-flex ">
+                <div class="header1">
+                    <img src="img/logoBanco1.jpg">
+                </div>
+                <div class="header2 d-flex justify-content-end">
+                    <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                </div>             
+            </div>
+    </header>   
+    <main >
+        <div class="indexAccounts">
+            <div class="seccion1">
+                <div class="divAccouns1">
+                <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                </div>   
+                <div class="divAccouns2 d-flex justify-content-end">
+                <span>{{cliente.email}}</span>
+                </div>
+            </div>
+        </div>      
+        <div class="seccion2">    
+            <div class="seccion2Nav">
+                <nav class="nav1 ">
+                    <a class="nav-link disabled text-white" href="accounts.html" >Cuentas</a>
+                    <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                    <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                               
+                    <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                    <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                </nav>
+            </div> 
+        </div>                  
+            <div class="bottonVolver d-flex justify-content-end">
+                <a class="text-white " href="accounts.html"><button class="btn btn-secondary btn-sm ">Volver</button></a>
+            </div>
+            <div class="cont"> 
+                    <div class="divCreateCard">
+                        <div class="CreateCard">
+                            <form >
+                                <div class="text-center" >
+                                    <h4>Solicitud para alta de cuenta</h4>
+                                </div>
+                                <div class="text-center" >
+                                    <template v-if="(accounts.length)<3 ">
+                                    <label >Seleccione un tipo de cuenta :</label>
+                                    <select v-model="tipoCuenta" >   
+                                        <option value="Ahorro">Cuenta de Ahorro</option>
+                                        <option value="Corriente">Cuenta Corriente</option>
+                                        </select>
+                                </div>
+                                    
+                                    <div class="text-center">
+                                        <button class="btn btn-secondary btn-sm "  type="button" @click="CrearAccount">Crear Cuenta</button> 
+                                    </div>
+                                </template>                    
+                                    <template v-else>
+                                        <div class="text-center" >    
+                                            <p>No puede crear mas cuentas !</p>
+                                            </div>
+                                        <div class="text-center" >
+                                            <p>Ante cualquier duda dirijase a su agente de cuentas. </p>
+                                        </div>                                            
+                                    </template>
+                            </form>
+                        </div>
+                    </div>
+            </div>                  
+    </main>
+    <footer>
+            <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/create-accounts.js"></script>
+</body>
+</html>

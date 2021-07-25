@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking - Pedir préstamos</title>
+</head>
+<body class="container" id="app">
+    <header>
+            <div class="headerIndex d-flex ">
+                    <div class="header1">
+                        <img src="img/logoBanco1.jpg">
+                    </div>
+                    <div class="header2 d-flex justify-content-end">
+                        <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                    </div>             
+            </div> 
+    </header>     
+    
+    <main >  
+           <div class="indexAccounts">
+                    <div class="seccion1">
+                        <div class="divAccouns1">
+                        <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                        </div>   
+                        <div class="divAccouns2 d-flex justify-content-end">
+                        <span>{{cliente.email}}</span>
+                        </div>
+                    </div>
+            </div>            
+                    <div class="seccion2">    
+                        <div class="seccion2Nav">
+                            <nav class="nav1 ">
+                                <a class="nav-link disabled text-white" href="accounts.html" >Cuentas</a>
+                                <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                                <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                                
+                                <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                                <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                                <a class="nav-link active text-white navbar-brand mb-0 h1 " href="loan-application.html">Solicitar Préstamo</a>
+                            </nav>
+                        </div> 
+                    </div>  
+            <div class="bottonVolver d-flex justify-content-end">
+                <a class="text-white " href="prestamos.html"><button class="btn btn-secondary btn-sm ">Volver</button></a>
+            </div>
+            <div class="divCreateCard">                                
+            <form @submit.prevent="CrearSolicitudPrestamo">
+                        <div class="text-center" >
+                            <h4>Tenemos para ofreterte estos préstamos.</h4>
+                        </div>                                              
+                        <div class="prestamosDisponibles" >                                          
+                            <div v-for="prestamo in arrayLoans" class="check">
+                                                                                      
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-info">
+                                            <input type="radio" class="btn-check" :name="prestamo" :value="prestamo.name" v-model="tipoPrestamo" id="option1" autocomplete="off" >
+                                    {{prestamo.name}}
+                                        </label>
+                                    </div>                                                       
+                                
+                            </div>                                                                                                                                                                                          
+                        </div>
+                    <div class="loanseccion1">  
+                    <div v-show="tipoPrestamo" class="prestamoSeccion1-2-3">
+                        <div class="seccion1" v-if="tipoPrestamo">
+                            <div class="text-center">
+                                <h5>{{tipoPrestamo}}</h5>
+                            </div>
+                            <div class="text-center">
+                                <label>Puedas pedir hasta: ${{saldo(tipoPrestamo)}} pesos </label>
+                            </div> 
+                            <div class="text-center">
+                            <label>Porcentaje de interés: {{porcentaje(tipoPrestamo)}}% </label>
+                            </div> 
+                            <div class="text-center">
+                                <label>Cuotas disponibles: {{cuotas(tipoPrestamo)}} </label>
+                            </div> 
+
+                        </div> 
+                        <div class="seccion2 " v-if="tipoPrestamo">
+                            <div class="text-center">
+                                <h5>Arma tu préstamo</h5>
+                            </div>
+                            <div class="text-center">
+                             <select v-model="cuotasSeleccionadas"  >   
+                                <option value="">Cuotas disponibles</option>
+                                    <option v-for="prestamo in cuotas(tipoPrestamo)">{{prestamo}}</option>
+                            </select> 
+                            
+                        </div>   
+                            <!-- <div  class="text-center">
+                                <input class="inputPrestamo" v-model="cuotasSeleccionadas" type="number"
+                                 id="cuotasSeleccionadas" name="cuotasSeleccionadas" placeholder="Ingrese cuotas" required min="1" max="100">
+                            </div>  --> 
+                            
+                            <div  class="text-center">
+                                <input class="inputPrestamo" v-model="amount" type="number"
+                                 id="amount" name="amount" placeholder="Ingrese monto" required min="1" max="10000000">
+                            </div>
+                            <div  class="text-center d-flex flex-column align-items-center">
+                                <label for="state">Cuenta destino</label>
+                                <select class="inputPrestamo" v-model="cuentaDestino">   
+                                    <option  value="">Cuentas</option>
+                                    <option v-for="cuenta in arrayAccounts">{{cuenta.number}}</option>
+                                </select>
+                            </div> 
+                            </div>
+                            <div class="seccion3 text-center" v-if="amount && cuotasSeleccionadas" >
+                                <div class="text-center">
+                                    <h5>Simulacion de Préstamo</h5>
+                                </div>
+                                <div class="text-center">
+                                    <label>Importe solicitado:${{mostrar()}}</label>
+                                </div>
+                                <div class="text-center">
+                                <label>Importe con intereses: ${{calcularImporteconInteres()}}</label>
+                                </div>
+                                <div class="text-center">
+                                <label>Valor de cuota: ${{calcularValorCuota()}} </label>
+                                </div>
+                            </div> 
+                         </div>    
+                    
+                                    
+                        </div>                                                                                          
+                        <div class="text-center" v-if="amount">
+                            <button class="btn btn-secondary btn-sm " type="submit">Quiero el préstamo!</button> 
+                        </div>                     
+            </form>
+            </div>
+         
+    </main>
+    <footer>
+            <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>   
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/loan-application.js"></script>
+    
+</body>
+</html>

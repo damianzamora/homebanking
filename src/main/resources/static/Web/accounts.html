@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking - Cuentas</title>
+</head>
+<body class="container" id="app" >
+    <header>    
+            <div class="headerIndex d-flex ">
+                <div class="header1">
+                    <img src="img/logoBanco1.jpg">
+                </div>
+                <div class="header2 d-flex justify-content-end">
+                    <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+                </div>             
+            </div>          
+    </header> 
+    <main >   
+        <div class="indexAccounts">
+                <div class="seccion1">
+                    <div class="divAccouns1">
+                    <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
+                    </div>   
+                    <div class="divAccouns2 d-flex justify-content-end">
+                    <span>{{cliente.email}}</span>
+                    </div>
+                </div>
+        </div>      
+        <div class="seccion2">    
+            <div class="seccion2Nav">
+                <nav class="nav1 ">
+                    <a class="nav-link active text-white navbar-brand mb-0 h1" href="accounts.html" >Cuentas</a>
+                    <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                    <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                               
+                    <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                    <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                </nav>
+            </div> 
+        </div>  
+        <div class="crearAccount d-flex justify-content-end">
+            <a class="text-white " href="create-accounts.html"><button class="btn btn-secondary btn-sm ">Crear Cuenta</button></a>
+        </div> 
+            <div class="divTable">
+                    <template v-if="accounts.length > 0" >
+                        <table class="table table-striped w-100" >
+                            <thead >
+                                    <tr>
+                                        <th class="text-center">Número de cuenta</th>
+                                        <th class="text-center">Fecha de creación</th>
+                                        <th class="text-center">Tipo de Cuenta</th>
+                                        <th class="text-center">Balance</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>                                               
+                            </thead>
+                            <tbody>
+                                    <tr v-for="cuenta in accounts">
+                                        <td data-label="Número de cuenta" class="text-center">{{cuenta.number}}</td>
+                                        <td data-label="Fecha de creación"class="text-center">{{formatDate(cuenta.creationDate)}}</td>
+                                        <td data-label="Tipo de Cuenta"class="text-center">{{cuenta.tipoCuenta}}</td>
+                                        <td data-label="Balance"class="text-center">${{cuenta.balance}}</td>
+                                        <td data-label="Accion"class="text-center"><a :href="'/Web/account.html?id='+cuenta.id"><button class="btn btn-secondary btn-sm">Movimientos</button></a></td>
+                                        <td data-label="Accion"class="text-center"><button class="btn btn-secondary btn-sm" type="button" @click="EliminarCuenta(cuenta)">Eliminar Cuenta</button></td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </template>
+                    <template v-else>
+                        <div class="divCards d-flex flex-column align-items-center">
+                            <div class="text-center"><h3>No tienes cuentas para mostrar.</h3></div>
+                            <div class="text-center"><h5>pero puedes crear una desde <a href="create-accounts.html">aquí</a>.</h5></div>
+                        </div>    
+                    </template>
+                </div>
+        </main>
+        <footer>
+                    <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/accounts.js"></script>
+</body>
+</html>

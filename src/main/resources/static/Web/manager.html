@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Formulario TP1 Java</title>
+</head>
+<body class="container" id="app">
+    
+    <header>
+            
+        <div class="headerIndex d-flex ">
+            <div class="header1">
+                <img src="img/logoBanco1.jpg">
+            </div>
+            <div class="header2 d-flex justify-content-end">
+                <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
+            </div>             
+        </div>
+       
+</header> 
+    <main id="app">
+            <div class="indexGeneral">
+                                <div class="index1">
+                                    <h1>Client Manager</h1>
+                                    <form  >   
+                                    <div > 
+                                    <label for="nombre">Nombre</label>
+                                    <input v-model="nombre" type="text" id="nombre" name="nombre" required >
+                                    </div>
+                                    <div>
+                                    <label for="apellido">Apellido</label>
+                                    <input v-model="apellido" type="text" id="apellido" name="apellido" required >
+                                    </div>
+                                    <div>
+                                    <label for="email">Email</label>
+                                    <input v-model="email" type="text" id="email" name="email" required>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-dark" type="submit" @click="enviarDatos">Enviar datos</button> 
+                                    </div>
+                                    </form>
+                                </div>             
+                                <div class="index2">
+                                    <h1>Client List</h1>
+                                            <table class="table"> 
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Nombre</th>
+                                                        <th scope="col">Apellido</th>
+                                                        <th scope="col">Email</th>    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>  
+                                                    <tr v-for="cliente in clientes">
+                                                        <td>{{cliente.firstName}}</td>
+                                                        <td>{{cliente.lastName}}</td>
+                                                        <td>{{cliente.email}}</td>
+                                                        <td><button  @click="eliminarDato(cliente)"><img src="./img/iconoBorrar.jpg"></button> </td>
+                                                    </tr>   
+                                                </tbody>
+                                            </table>
+                                </div>                                       
+                                <div class="d-flex justify-content-center">
+                                    <h1>JSON</h1>
+                                    <code>{{json}}</code>
+                                </div> 
+                                  
+            </div>   
+        
+</main>
+<footer>
+    <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/manager.js"></script>
+</body>
+</html>
+    
+    
+
