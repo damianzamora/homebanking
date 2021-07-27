@@ -10,7 +10,7 @@ Capturas
 
 Inicio de sesion:
 
-https://user-images.githubusercontent.com/63264380/126651045-2de03bba-0eca-4c6b-83c5-950e7f7de7fc.png
+<img src="https://user-images.githubusercontent.com/63264380/126651045-2de03bba-0eca-4c6b-83c5-950e7f7de7fc.png">
 
 Registro de cuenta:
 
