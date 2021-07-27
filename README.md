@@ -14,17 +14,17 @@ Inicio de sesion:
 
 Registro de cuenta:
 
-https://user-images.githubusercontent.com/63264380/126654469-a6cc5724-4d91-4241-8db0-df63347707f8.png
+<img src="https://user-images.githubusercontent.com/63264380/126654469-a6cc5724-4d91-4241-8db0-df63347707f8.png">
 
 Seccion Cuentas bancarias
 
-https://user-images.githubusercontent.com/63264380/126654618-17304719-bf95-477e-be72-4787b920fee9.png
+<img src="https://user-images.githubusercontent.com/63264380/126654618-17304719-bf95-477e-be72-4787b920fee9.png">
 
 Seccion tarjetas
 
-https://user-images.githubusercontent.com/63264380/126654740-9beab5bb-8d85-4db4-935b-31048f56c59e.png
+<img src="https://user-images.githubusercontent.com/63264380/126654740-9beab5bb-8d85-4db4-935b-31048f56c59e.png">
 
 Vista de la aplicacion desde un celular:
 
-https://user-images.githubusercontent.com/63264380/126655197-f4d02967-b15e-49b0-8745-f61e079b0a20.png
+<img src="https://user-images.githubusercontent.com/63264380/126655197-f4d02967-b15e-49b0-8745-f61e079b0a20.png">
 
