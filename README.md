@@ -4,7 +4,7 @@ Mi primer proyecto en JAVA consiste en la realizacion de un Homebanking , el cua
 
 El proyecto se encaro utilizando las siguientes tecnologias: JAVA 11, VUE 3.0 , AXIOS , CSS , HTML5 , BOOTSTRAP.
 
-Link para ver proyecto : https://worldbanking.herokuapp.com/Web/index.html
+Link para ver proyecto : https://worldhomebanking.herokuapp.com/Web/index.html
 
 Capturas
 
@@ -18,11 +18,16 @@ Registro de cuenta:
 
 Seccion Cuentas bancarias
 
-<img src="https://user-images.githubusercontent.com/63264380/126654618-17304719-bf95-477e-be72-4787b920fee9.png">
+<img src="https://user-images.githubusercontent.com/63264380/127190055-e73f4d48-a997-4ed1-b971-9b05707255ae.png">
 
 Seccion tarjetas
 
-<img src="https://user-images.githubusercontent.com/63264380/126654740-9beab5bb-8d85-4db4-935b-31048f56c59e.png">
+<img src="https://user-images.githubusercontent.com/63264380/127190137-c3a6319c-01f2-45bb-a11f-9e3682cb6360.png">
+
+Seccion Préstamos
+
+<img src="https://user-images.githubusercontent.com/63264380/127190276-24689479-4be4-4783-897d-35c2db42df6e.png">
+
 
 Vista de la aplicacion desde un celular:
 
