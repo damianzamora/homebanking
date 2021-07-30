@@ -15,10 +15,13 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface PagoRepository extends JpaRepository <Pago, Long >,JpaSpecificationExecutor {
+//Con SQL ACTIVADO
+ //   @Query (value = "SELECT * FROM homebanking.pago WHERE description LIKE %?1% and client_id LIKE ?2 ",nativeQuery = true)
+ //   List<Pago> findbydescription(@Param("filtro") String filtro,@Param("id_cliente") Long id_cliente );
 
-    @Query (value = "SELECT * FROM homebanking.pago WHERE description LIKE %?1% and client_id LIKE ?2 ",nativeQuery = true)
+    //CON H2 ACTIVADO
+    @Query (value = "SELECT * FROM pago WHERE description LIKE %?1% and client_id LIKE ?2 ",nativeQuery = true)
     List<Pago> findbydescription(@Param("filtro") String filtro,@Param("id_cliente") Long id_cliente );
-
     //List<Pago> findByDescriptionContaining(@Param("filtro") String filtro);
     //
 

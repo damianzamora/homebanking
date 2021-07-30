@@ -118,7 +118,7 @@ public class ClientController {
 
 
         if (passwordEncoder.matches(contraseñaActual,client.getPassword() )) {
-            System.out.println("Coinciden las contraseñas");
+            //System.out.println("Coinciden las contraseñas");
             client.setPassword(passwordEncoder.encode(contraseñaNueva));
             clientrepository.save(client);
             return new ResponseEntity<>("Contraseña Actualizada", HttpStatus.ACCEPTED);
