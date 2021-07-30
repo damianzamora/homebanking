@@ -20,9 +20,10 @@ public interface PagoRepository extends JpaRepository <Pago, Long >,JpaSpecifica
  //   List<Pago> findbydescription(@Param("filtro") String filtro,@Param("id_cliente") Long id_cliente );
 
     //CON H2 ACTIVADO
-    @Query (value = "SELECT * FROM pago WHERE description LIKE %?1% and client_id LIKE ?2 ",nativeQuery = true)
+    @Query (value = "SELECT * FROM pago WHERE upper(description)  LIKE %?1% and client_id LIKE ?2 ",nativeQuery = true)
     List<Pago> findbydescription(@Param("filtro") String filtro,@Param("id_cliente") Long id_cliente );
-    //List<Pago> findByDescriptionContaining(@Param("filtro") String filtro);
+
+  //  List<Pago> findByDescriptionContaining(@Param("filtro") String filtro);
     //
 
     }

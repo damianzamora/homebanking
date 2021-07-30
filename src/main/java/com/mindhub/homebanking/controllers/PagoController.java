@@ -54,7 +54,7 @@ public class PagoController {
         }
         */
         Client client= clientRepository.findByEmail(authentication.getName());
-        return pagoRepository.findbydescription(filtro, client.getId()).stream().map(pago -> new PagoDTO(pago)).collect(Collectors.toList());
+        return pagoRepository.findbydescription(filtro.toUpperCase(), client.getId()).stream().map(pago -> new PagoDTO(pago)).collect(Collectors.toList());
 
     }
 
@@ -93,7 +93,7 @@ public class PagoController {
             if(temp.getBalance()>=amount)
             {
                 account=temp;
-                System.out.println(account.getNumber());
+                //System.out.println(account.getNumber());
             }
         }
         if (account == null) {
