@@ -87,6 +87,14 @@ public class ClientController {
         if ( mailActual.isEmpty() || mailNuevo.isEmpty()){
             return new ResponseEntity<>("Error en los datos",HttpStatus.FORBIDDEN);
         }
+        if (mailActual.equals(mailNuevo)){
+            return new ResponseEntity<>("Mail actual no puede ser igual a mail nuevo",HttpStatus.FORBIDDEN);
+        }
+
+        if(clientrepository.findByEmail(mailNuevo)!=null){
+            return new ResponseEntity<>("mail en uso, ingrese otro !",HttpStatus.FORBIDDEN);
+        }
+
         Client client= clientrepository.findByEmail(authentication.getName());
 
 
@@ -95,6 +103,7 @@ public class ClientController {
             if(! (clientrepository.findByEmail(mailActual).getEmail() == client.getEmail())) {
                 return new ResponseEntity<>("El mail no corresponde a tu usuario",HttpStatus.FORBIDDEN);
             }
+
             else {
                   client.setEmail(mailNuevo);
                   clientrepository.save(client);
