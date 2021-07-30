@@ -123,6 +123,10 @@ public class ClientController {
         if ( contraseñaActual.isEmpty() || contraseñaNueva.isEmpty()){
             return new ResponseEntity<>("Error en los datos",HttpStatus.FORBIDDEN);
         }
+        if(contraseñaActual.equals(contraseñaNueva))
+        {
+            return new ResponseEntity<>("Ingrese una clave distinta a la actual",HttpStatus.FORBIDDEN);
+        }
         Client client= clientrepository.findByEmail(authentication.getName());
 
 
