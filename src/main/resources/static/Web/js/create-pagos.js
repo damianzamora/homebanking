@@ -58,8 +58,7 @@ const app = Vue.createApp({
                    'Muchas gracias',
                     "success",))
                   
-			    //   .then(response => window.location.href = "loan-application.html")
-                  
+			       .then(res => window.location.href = "pagos.html")
                   .catch(res=> Swal.fire(res.response.data,"Revise la informacion","error"))
                   
                   

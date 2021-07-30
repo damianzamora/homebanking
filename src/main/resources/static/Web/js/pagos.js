@@ -4,6 +4,8 @@ const app = Vue.createApp({
             cliente:[],
             cards:[],
             pagos:[],
+            pagosFiltrados:[],
+            afiltrar:"",
             
 
             
@@ -22,6 +24,26 @@ const app = Vue.createApp({
     methods:{
         formatDate(date){
             return new Date(date).toLocaleDateString('en-GB');
+        },
+        filtrar(){
+            
+            axios.get('/api/pagoFiltrar',
+                    {params: {
+                        filtro: this.afiltrar
+                    },
+                        headers:{'content-type':'application/x-www-form-urlencoded'}})
+                    .then(res=>{
+                         this.pagos= res.data   
+                                                  
+                            }
+                            )
+                            .catch(res => Swal.fire("error","Intente nuevamente","error"))
+        },
+        reset(){
+            axios.get('/api/clients/current')
+            .then(res=> {
+             this.pagos=res.data.pagos
+            })
         },
         
         logout(){

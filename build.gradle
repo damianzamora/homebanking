@@ -22,6 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
+	//runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 

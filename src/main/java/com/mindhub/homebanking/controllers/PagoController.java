@@ -1,9 +1,11 @@
 package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.AccountDTO;
+import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.dtos.PagoDTO;
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
+import net.bytebuddy.asm.Advice;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +17,7 @@ import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -44,6 +43,19 @@ public class PagoController {
     @GetMapping("/pagos")
     public List<PagoDTO> getPagos() {
         return pagoRepository.findAll().stream().map(pago -> new PagoDTO(pago)).collect(Collectors.toList());
+    }
+
+    @GetMapping(path= "/pagoFiltrar")
+    public List<PagoDTO> getPagosFiltrados(@RequestParam String filtro, Authentication authentication){
+        /*
+        List<Pago> pagos = pagoRepository.findbydescription(filtro);
+        for(Pago s : pagos){
+            System.out.println("Pago filtrado: "+s.getAmount()+" "+s.getDescription()+" "+s.getAccountNumber() );
+        }
+        */
+        Client client= clientRepository.findByEmail(authentication.getName());
+        return pagoRepository.findbydescription(filtro, client.getId()).stream().map(pago -> new PagoDTO(pago)).collect(Collectors.toList());
+
     }
 
     @Transactional

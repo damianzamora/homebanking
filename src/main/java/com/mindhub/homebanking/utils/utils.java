@@ -3,6 +3,11 @@ package com.mindhub.homebanking.utils;
 
 import com.mindhub.homebanking.models.CardType;
 import com.mindhub.homebanking.models.Loan;
+import com.mindhub.homebanking.models.Pago;
+import com.mindhub.homebanking.repositories.PagoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.awt.*;
 
 public class utils {
 
@@ -25,6 +30,8 @@ public class utils {
             return false;
         }
     }
+
+
 
 }
 

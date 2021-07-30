@@ -10,14 +10,16 @@
 </head>
 <body class="container" id="app" >
     <header>
-                <div class="headerIndex d-flex ">
-                    <div class="header1">
-                        <img src="img/logoBanco1.jpg">
-                    </div>
-                    <div class="header2 d-flex justify-content-end">
-                        <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
-                    </div>             
-                </div>
+        <div class="headerIndex">
+            <div class="header1">
+                <img src="img/logoBanco1.jpg">
+            </div>
+            <div class="header2">
+                   
+                <a class="text-white " href="perfil.html"><button class="btn btn-secondary btn-sm ">Perfil</button></a>  
+                <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button>                 
+            </div> 
+        </div> 
         </header>    
     <main >  
         <div class="indexAccounts">
@@ -42,12 +44,25 @@
                 </nav>
             </div> 
         </div>  
-        <div class="bottonVolver d-flex justify-content-end">
+        <div class="bottonVolver d-flex justify-content-start">
+        
             <a class="text-white " href="create-pagos.html"><button class="btn btn-secondary btn-sm ">Hacer un pago</button></a>
-        </div>
+            <div class="bottonVolver d-flex justify-content-end">
+            
+              
+                
+                <input class="inputPrestamo" v-model="afiltrar" type="text"
+                     id="afiltrar" name="afiltrar" placeholder="buscar por descripcion" required maxlength="10">
+                     <button class="btn btn-secondary btn-sm h-25" type="button"   @click="filtrar">Filtrar</button>
+                <button class="btn btn-secondary btn-sm h-25" type="button"   @click="reset">Reset</button>
+                </div>   
+        </div> 
+         
                 <div class="cont"> 
                     <div class="divTable">
-                        <template v-if="pagos.length > 0" >
+                    
+                       
+                            <template v-if="pagos.length > 0 ">
                             <table class="table table-striped">
                                 <thead >                                                
                                         <tr>
@@ -70,14 +85,14 @@
                                         </tr>
                                 </tbody>
                             </table>    
-                        </template>
+                            </template>
                             <template v-else>
                                 <div class="divCards d-flex flex-column align-items-center">
-                                    <div class="text-center"><h3>No tienes pagos para mostrar.</h3></div>
+                                    <div class="text-center"><h3>No tienes pagos  para mostrar.</h3></div>
                                     
                                 </div>    
-                            </template>                                            
-                            
+                            </template>     
+                           
                     </div>
                             
                 </div>  

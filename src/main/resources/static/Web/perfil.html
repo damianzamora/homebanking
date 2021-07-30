@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="./img/logo-The-World-Bank-tarjeta.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home Banking - Perfil</title>
+</head>
+<body class="container" id="app" >
+    <header>    
+        <div class="headerIndex">
+            <div class="header1">
+                <img src="img/logoBanco1.jpg">
+            </div>
+            <div class="header2">
+                   
+                <a class="text-white " href="perfil.html"><button class="btn btn-secondary btn-sm ">Perfil</button></a>  
+                <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button>                 
+            </div> 
+        </div>          
+    </header> 
+    <main >   
+        <div class="indexAccounts">
+            <div class="seccion1">
+                <div class="divtituloPerfil">
+                    <h4>Panel de control</h4>
+                </div>   
+                
+            </div>
+            
+        </div>
+        <div class="seccion2">    
+            <div class="seccion2Nav">
+                <nav class="nav1 ">
+                    <a class="nav-link disabled text-white" href="accounts.html" >Cuentas</a>
+                    <a class="nav-link disabled text-white" href="prestamos.html">Préstamos</a>
+                    <a class="nav-link disabled text-white " href="cards.html">Tarjetas</a>                                
+                    <a class="nav-link disabled text-white " href="transfers.html">Transferencias</a>
+                    <a class="nav-link disabled text-white " href="pagos.html">Pagos</a>
+                </nav>
+            </div> 
+        </div>
+             
+        <div class="seccion2">    
+            <div class="bottonVolver d-flex justify-content-end">
+                <a class="text-white " href="accounts.html"><button class="btn btn-secondary btn-sm ">Volver</button></a>
+            </div>    
+        </div>  
+        <div class="seccionPerfil ">
+            <div class="fotoPerfil">
+                <img src="/Web/img/user.jpg">
+            </div>
+            <div class="datosPerfil "> 
+                <h3>{{cliente.firstName+" "+cliente.lastName}}</h3>
+                <h4>{{cliente.email}}</h4>
+            </div> 
+        </div> 
+        <div class="seccionPerfil2">
+            <div class="botonesPerfil">
+                <div class="check">                                                            
+                    <div class=" btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="boton3 btn btn-secondary">
+                            <input type="radio" class="btn-check"  value="contraseña" v-model="tipoPerfil">
+                    Cambiar contraseña
+                        </label>
+                    </div>                                                       
+                </div>
+                <div class="check">                                                            
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="boton3 btn btn-secondary">
+                            <input type="radio" class="btn-check"  value="email" v-model="tipoPerfil"  >
+                    Cambiar mail
+                        </label>
+                    </div>                                                       
+                </div>    
+                <div class="check">                                                            
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="boton3 btn btn-secondary">
+                            <input type="radio" class="btn-check"  value="estadisticas" v-model="tipoPerfil" >
+                    Estadisticas
+                        </label>
+                    </div>                                                       
+                </div>  
+            </div>
+            <div class="botonesPerfilDerecha">  
+                    <div class="d-flex justify-content-center w-100" v-if="tipoPerfil==''">
+                            <h5>Bienvenido al panel de configuración, aquí podrás cambiar tu mail o contraseña.</h5>
+                    </div> 
+                    <div v-if ="tipoPerfil=='email'">
+                        <form @submit.prevent="cambiarEmail">
+                            <div class="text-center" >                                           
+                               
+                                <div class=" d-flex flex-column align-items-center"  >
+                                    <label>Ingrese su mail:</label>
+                                    <input class="input3 form-control " v-model="mailActual" type="text"
+                                     id="mailActual" name="mailActual" placeholder="mail actual" required maxlength="30">
+                                </div> 
+                                <div class="form-group mb-2 d-flex flex-column align-items-center" >
+                                    <label>Ingrese mail nuevo:</label>
+                                    <input class="input3 form-control " v-model="mailNuevo" type="text"
+                                     id="mailNuevo" name="mailNuevo" placeholder="mail nuevo" required maxlength="30">
+                                </div> 
+
+                               
+                            </div>
+                                <div class="text-center">
+                                    <button class="btn btn-secondary btn-sm "  type="submit" >Cambiar email</button> 
+                                </div>                                    
+
+                        </form>
+                    </div>
+                    <div v-if ="tipoPerfil=='contraseña'">
+                        <form @submit.prevent="cambiarContraseña">
+                            <div class="text-center" >                                           
+                               
+                                <div class=" d-flex flex-column align-items-center"  >
+                                    <label>Ingrese su clave</label>
+                                    <input class="input3 form-control " v-model="contraseñaActual" type="password"
+                                     id="contraseñaActual" name="contraseñaActual" placeholder="contraseñaActual" required maxlength="15">
+                                </div> 
+                                <div class="form-group mb-2 d-flex flex-column align-items-center" >
+                                    <label>Ingrese contraseña nueva:</label>
+                                    <input class="input3 form-control " v-model="contraseñaNueva" type="password"
+                                     id="contraseñaNueva" name="contraseñaNueva" placeholder="ContraseñaNueva" required maxlength="15">
+                                </div> 
+
+                               
+                            </div>
+                                <div class="text-center">
+                                    <button class="btn btn-secondary btn-sm "  type="submit" >Cambiar contraseña</button> 
+                                </div>                                    
+
+                        </form>
+                    </div>
+                    <div v-if ="tipoPerfil=='estadisticas'">
+                        <div class="text-center">
+                            <h5>Resumen de su actividad.</h5>
+                            <p>Cantidad de cuentas: {{accountsActive.length}}</p>
+                            <p>Cantidad de tarjetas de crédito: {{cards_credit.length}}</p>
+                            <p>Cantidad de tarjetas de débito: {{cards_debit.length}}</p>
+                            <p>Cantidad de péstamos obtenidos: {{loans.length}}</p>
+                            <p>Cantidad de pagos realizados: {{pagos.length}}</p>
+                        </div>
+                    </div>
+                    
+
+
+            </div>  
+
+        </div>        
+        </main>
+        <footer>
+                    <h5 class="d-flex justify-content-center aling-item-center">The World Bank SRL</h5>
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/perfil.js"></script>
+</body>
+</html>

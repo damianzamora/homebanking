@@ -10,19 +10,21 @@
 </head>
 <body class="container" id="app" >
     <header>    
-            <div class="headerIndex d-flex ">
+            <div class="headerIndex">
                 <div class="header1">
                     <img src="img/logoBanco1.jpg">
                 </div>
-                <div class="header2 d-flex justify-content-end">
-                    <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button> 
-                </div>             
+                <div class="header2">
+                       
+                    <a class="text-white " href="perfil.html"><button class="btn btn-secondary btn-sm ">Perfil</button></a>  
+                    <button class="btn btn-danger btn-sm " type="submit" @click="logout">LogOut</button>                 
+                </div> 
             </div>          
     </header> 
     <main >   
         <div class="indexAccounts">
                 <div class="seccion1">
-                    <div class="divAccouns1">
+                    <div class="divAccouns1 ">
                     <h4>Bienvenida/o {{cliente.firstName+" "+cliente.lastName}}</h4>
                     </div>   
                     <div class="divAccouns2 d-flex justify-content-end">
