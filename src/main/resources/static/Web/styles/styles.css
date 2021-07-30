@@ -745,6 +745,14 @@ tbody td:before {
     gap:1rem;
 }
 
+.input3{
+    width: 15em !important;
+}
+
+.datosPerfil h3 {
+    size: 0.5em;
+}
+
 
 }
 
