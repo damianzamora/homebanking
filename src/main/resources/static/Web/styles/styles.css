@@ -597,6 +597,11 @@ margin-left: 4px;
     height: 100%;
 }
 
+.botonesPagos{
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (min-width: 50px) and (max-width:770px){
     .seccionCards{
         margin-top: 5vh;
@@ -749,9 +754,13 @@ tbody td:before {
     width: 15em !important;
 }
 
-.datosPerfil h3 {
-    size: 0.5em;
+.botonesPagos{
+    display: flex;
+    flex-direction: column;
+    
 }
+
+
 
 
 }
