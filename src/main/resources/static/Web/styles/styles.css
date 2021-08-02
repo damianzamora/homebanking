@@ -602,7 +602,7 @@ margin-left: 4px;
     align-items: center;
 }
 
-@media screen and (min-width: 50px) and (max-width:770px){
+@media screen and (min-width: 316px) and (max-width:770px){
     .seccionCards{
         margin-top: 5vh;
         width: 100%;
@@ -757,13 +757,195 @@ tbody td:before {
 .botonesPagos{
     display: flex;
     flex-direction: column;
+}
+
+.bottonVolver{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+}
+
+@media screen and (min-width: 50px) and (max-width:316px){
+
+    .header2{
+        display: flex;
+        
+        justify-content: flex-end;
+        width: 100%;
+        height: 25%;
+        gap:0;
+    }
+
+
+    .seccionCards{
+        margin-top: 5vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .seccionCards > div{
+        width: 100%;
+    }
     
+  /*//////MEDIA - Responsive loan-application.html///// */  
+
+
+  .prestamosDisponibles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .prestamoSeccion1-2-3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+  }
+  .seccion1{
+      width: 100% ;
+  }
+  .seccion2{
+    width: 100% ;
+}
+
+.seccion3{
+    width: 100%;
+}
+
+  
+
+  .loanseccion1{
+      display: flex;
+      flex-direction: column;
+  }
+  .crearPrestamo{
+    height: 2rem; 
+}
+
+.check{
+    padding: 0.2rem;
+    border: 0.2rem;
+}
+ 
+/*////////////////////////ACCOUNTS.HTML/////*/
+
+table {
+    width:100%;
+}
+thead {
+    display: none;
+}
+tr:nth-of-type(2n) {
+    background-color: inherit;
+}
+tr td:first-child {
+    background: lightgray;
+    font-weight:bold;
+    font-size:1.3em;
+}
+tbody td {
+    display: block;
+    text-align:center;
+}
+tbody td:before {
+    content: attr(data-th);
+    display:block;
+    text-align:center;
+}
+
+.crearAccount{
+    height: 2rem; 
+}
+
+.nav1{
+    display: flex;
+    flex-direction: column;
+}    
+
+/*/////////////////////////////CREDITS_CARDS.HTML////////////////*/
+
+.CreateCard{
+    width: 100%;
+}
+
+/*//////////////////////TRANSFERENCIAS.HTML////////////*/
+
+.botontipoTrans{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*//////MEDIA - Responsive perfil.html///// */ 
+
+.seccionPerfil{
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;   
+    gap:2rem;
+}
+
+.fotoPerfil {
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    width: 100%;
+
 }
 
 
+.seccionPerfil2{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
 
+.botonesPerfil{
+    height: 25%;
+    display: flex;
+    width: 100%;
+    gap:1rem;
+}
+
+.botonesPerfilDerecha{
+    height: 75%;
+    width: 100%;
+    gap:1rem;
+}
+
+.input3{
+    width: 15em !important;
+}
+
+.botonesPagos{
+    display: flex;
+    flex-direction: column;
+}
+
+.bottonVolver{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 }
+
 
 
 
