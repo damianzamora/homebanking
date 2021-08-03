@@ -53,15 +53,14 @@
                                 <div class="text-center" >
                                     <h4>Solicitud para alta de cuenta</h4>
                                 </div>
-                                <div class="text-center" >
-                                    <template v-if="(accounts.length)<3 ">
-                                    <label >Seleccione un tipo de cuenta :</label>
-                                    <select v-model="tipoCuenta" >   
-                                        <option value="Ahorro">Cuenta de Ahorro</option>
-                                        <option value="Corriente">Cuenta Corriente</option>
+                                <template v-if="(accounts.length)<3 ">
+                                    <div class="d-flex flex-column text-center">                                    
+                                        <label >Seleccione un tipo de cuenta</label>
+                                        <select v-model="tipoCuenta" >
+                                            <option value="Ahorro">Cuenta de Ahorro</option>
+                                            <option value="Corriente">Cuenta Corriente</option>
                                         </select>
-                                </div>
-                                    
+                                    </div>                                    
                                     <div class="text-center">
                                         <button class="btn btn-secondary btn-sm "  type="button" @click="CrearAccount">Crear Cuenta</button> 
                                     </div>

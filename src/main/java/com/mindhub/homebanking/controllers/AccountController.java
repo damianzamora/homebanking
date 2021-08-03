@@ -51,6 +51,10 @@ public class AccountController {
     @PostMapping(path = "/clients/current/accounts")
 
     public ResponseEntity<Object> CrearCuenta(@RequestParam String tipoCuenta,Authentication authentication) {
+        if(tipoCuenta.isEmpty() ){
+            return new ResponseEntity<>("Debe ingresar un tipo de cuenta",HttpStatus.FORBIDDEN);
+        }
+
         Client client = clientrepository.findByEmail(authentication.getName());
         if (client.getAccounts().stream().filter(e->e.isActive()==true).toArray().length < 3) {
             accountRepository.save(new Account("VIN" + utils.getRandomNumber(1, 999999999), today,tipoCuenta, 0.0, true, client));

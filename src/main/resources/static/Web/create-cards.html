@@ -53,8 +53,8 @@
                                 <div class="text-center">
                                     <h3>Solicitud de alta de tarjeta</h3>
                                 </div>
-                                <div class="text-center" >
-                                    <template v-if="(arrayCredit.length + arrayDebit.length)<6 ">
+                                <template v-if="(arrayCredit.length + arrayDebit.length)<6 ">
+                                <div class="text-center" >                                    
                                     <label for="state">Seleccione un tipo de tarjeta: </label>
                                     <select v-model="cardType" >   
                                         <option value="DEBIT" >DEBITO</option>
@@ -76,7 +76,7 @@
                                 <template v-else>
                                     <div class="text-center" >    
                                         <p>No puede crear mas tarjetas !</p>
-                                        </div>
+                                    </div>
                                     <div class="text-center" >
                                         <p>Ante cualquier duda dirijase a su agente de cuentas. </p>
                                     </div>                                    

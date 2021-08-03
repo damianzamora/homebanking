@@ -17,8 +17,8 @@ const app = Vue.createApp({
     methods:{
         CrearAccount(){
             Swal.fire({
-                title: 'Desea crear la Cuenta?',
-                text: "",
+                title: '¿Desea crear la Cuenta?',
+                text: "Cuenta de tipo"+" "+this.tipoCuenta,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -33,8 +33,8 @@ const app = Vue.createApp({
                    'Cuenta creada con éxito!',
                     'Serás redireccionado a tus cuentas',
                     'success',))
-			      .then(response => window.location.href = "accounts.html")
-                  .catch(response=> Swal.fire("Alcanzó el limite de 3 cuentas","No puede crear mas cuentas","error"))
+			      .then(res => window.location.href = "accounts.html")
+                  .catch(res=> Swal.fire(res.response.data,"Aprete en la flechita para elegir un tipo","error"))
                   
                 }
               })   
