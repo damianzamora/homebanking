@@ -40,7 +40,7 @@ const app = Vue.createApp({
                     "amount="+this.amount+"&"+"description="+this.description+"&"+"numberOrigin="+this.cuentaOrigen+"&"+"numberDestiny="+this.cuentaDestino,
                     {headers:{'content-type':'application/x-www-form-urlencoded'}})
                     .then(res => Swal.fire(
-                   'Transferencia realizada con exito!',
+                   'Transferencia realizada con éxito!',
                     'Puedes chequear tu cuenta.',
                     'success',))
                     .then(res=>location.reload())

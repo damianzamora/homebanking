@@ -42,7 +42,7 @@ const app = Vue.createApp({
             	    "Number="+card.cardNumber,
             	    {headers:{'content-type':'application/x-www-form-urlencoded'}})
                   .then(res => Swal.fire(
-                   'Se realizo la baja con éxito!',
+                   'Se realizó la baja con éxito!',
                     'vaya a la sección "Crear tarjetas" para solicitar otra.',
                     'success',))
 			      .then(response => location.reload())

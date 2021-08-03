@@ -54,15 +54,15 @@
                                     <h3>Solicitud de alta de tarjeta</h3>
                                 </div>
                                 <template v-if="(arrayCredit.length + arrayDebit.length)<6 ">
-                                <div class="text-center" >                                    
-                                    <label for="state">Seleccione un tipo de tarjeta: </label>
+                                <div class="d-flex flex-column  text-center" >                                    
+                                    <label for="state">Seleccione un tipo de tarjeta</label>
                                     <select v-model="cardType" >   
                                         <option value="DEBIT" >DEBITO</option>
                                         <option value="CREDIT">CRÉDITO</option>
                                         </select>
                                 </div>
-                                    <div class="text-center" >
-                                        <label for="state">Seleccione un color de tarjeta: </label>
+                                    <div class="d-flex flex-column text-center" >
+                                        <label for="state">Seleccione un color de tarjeta</label>
                                         <select v-model="cardColor" >   
                                             <option value="SILVER">SILVER</option>
                                             <option value="GOLD">GOLD</option>

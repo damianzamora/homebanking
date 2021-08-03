@@ -59,7 +59,7 @@ const app = Vue.createApp({
                     "success",))
                   
 			       .then(res => window.location.href = "pagos.html")
-                  .catch(res=> Swal.fire(res.response.data,"Revise la informacion","error"))
+                  .catch(res=> Swal.fire(res.response.data,"Revise la información","error"))
                   
                   
                 }

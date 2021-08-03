@@ -93,7 +93,7 @@ const app = Vue.createApp({
                     )
                     .then(res => Swal.fire(
                    'Préstamo solicitado con exito!',
-                    'Se deposito el dinero en la cuenta seleccionada.',
+                    'Se depositó el dinero en la cuenta seleccionada.',
                     'success',))
                     .then(res => window.location.href = "prestamos.html")
                     .catch(res => Swal.fire(res.response.data,"Intente nuevamente","error"))

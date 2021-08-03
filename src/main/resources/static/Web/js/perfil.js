@@ -77,11 +77,11 @@ const app = Vue.createApp({
                     {headers:{'content-type':'application/x-www-form-urlencoded'}})
                   .then(res => Swal.fire(
                    'Se ha modificado los datos!',
-                   'Deberas iniciar sesion nuevamente',
+                   'Deberas iniciar sesión nuevamente',
                     "success",))
                   .then(res=>axios.post('/api/logout'))
 			      .then(response=>window.location.href = "index.html")
-                  .catch(res=> Swal.fire(res.response.data,"Revise la informacion","error"))
+                  .catch(res=> Swal.fire(res.response.data,"Revise la información","error"))
                     }
               })   
         },

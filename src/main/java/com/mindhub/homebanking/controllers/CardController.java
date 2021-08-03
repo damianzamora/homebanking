@@ -33,6 +33,7 @@ public class CardController {
                                                 @RequestParam CardColor cardColor,
                                                 Authentication authentication) {
 
+
         Client client= clientrepository.findByEmail(authentication.getName());
         if (client.getCards().stream().filter(e -> e.getCardType()==cardType).filter(e->e.isActive()==true).toArray().length < 3){
             cardRepository.save(new Card(cardType, cardColor, utils.getRandomNumber(1000,9999)+"-"+utils.getRandomNumber(1000,9999)+"-"+utils.getRandomNumber(1000,9999)+"-"+utils.getRandomNumber(1000,9999) ,

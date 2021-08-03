@@ -37,8 +37,8 @@ const app = Vue.createApp({
                    'Tarjeta creada con éxito!',
                     'Será direccionado a la sección tarjetas',
                     'success',))
-			      .then(response => window.location.href = "cards.html")
-                  .catch(response=> Swal.fire(response.response.data,"","error"))
+			      .then(res => window.location.href = "cards.html")
+                  .catch(res=> Swal.fire(res.response.data,"Asegurese de haber completado los campos.","error"))
                   
                 }
               })   
