@@ -52,23 +52,28 @@
                  <div class="CreateCard">
                     <template v-if="cards.length>0">        
                                     <form @submit.prevent="realizarPago">
-                                        <div class="text-center" >                                            
-                                            <select class="inputPrestamo" v-model="tarjetaSeleccionada">   
-                                                <option  value="">Tarjetas</option>
-                                                <option v-for="card in cards">{{card.cardNumber}}</option>
-                                            </select>
-                                            <div class="text-center" v-if="tarjetaSeleccionada">
-                                            <label>{{seleccionada(tarjetaSeleccionada)}}</label>
+                                        <div class="formpago text-center" > 
+                                            <div class="formpago">
+                                                <label class="labelPagos">Seleccione una tarjeta</label>                                           
+                                                <select class="inputPrestamo" v-model="tarjetaSeleccionada">   
+                                                    <option  value="">Mis tarjetas</option>
+                                                    <option v-for="card in cards">{{card.cardNumber}}</option>
+                                                </select>
+                                            </div>    
+                                            <div class="formpago" v-if="tarjetaSeleccionada">
+                                                <label>{{seleccionada(tarjetaSeleccionada)}}</label>
                                             </div>
-                                            <div class="text-center" >
-                                                <input v-model="amount" type="number" id="amount" name="amount" placeholder="Monto" required min="1" max="1000000">
+                                            <div class="formpago" >
+                                                <label class="labelPagos">Ingrese monto</label>
+                                                <input  v-model="amount" type="number" id="amount" name="amount" placeholder="Monto" required min="1" max="1000000">
                                             </div>
-                                            <div class="text-center" >
-                                                <input v-model="cvv" type="number" id="cvv" name="cvv" placeholder="cvv" required min="100" max="999" >
-                                            </div>
-                                        
-                                            <div class="text-center" >
-                                                <input class="inputPrestamo" v-model="descriptionCard" type="text"
+                                            <div class="formpago" >
+                                                <label class="labelPagos">Ingrese CVV</label>
+                                                <input  v-model="cvv" type="number" id="cvv" name="cvv" placeholder="cvv" required min="100" max="999" >
+                                            </div>                                        
+                                            <div class="formpago" >
+                                                <label class="labelPagos">Ingrese descripción</label>
+                                                <input  class="inputPrestamo" v-model="descriptionCard" type="text"
                                                  id="descriptionCard" name="descriptionCard" placeholder="Descripcion" required maxlength="20">
                                             </div> 
                                            

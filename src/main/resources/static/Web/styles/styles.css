@@ -54,8 +54,9 @@ select{
 .divAccouns1{
     display: flex;
     align-items: flex-start;
-
 }
+
+.labelPagos { width: 15em; } 
 
 /*//////////////////////////////////////////////// ACCOUNTS.HTML */
 .header1{
@@ -605,6 +606,12 @@ margin-left: 4px;
 .bottonVolver{
     display: flex;
     justify-content: flex-end;
+}
+
+.formpago{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (min-width: 316px) and (max-width:770px){
