@@ -29,7 +29,7 @@ const app = Vue.createApp({
         },
         EliminarTarjeta(card){
             Swal.fire({
-                title: 'Desea dar de baja la tarjeta?',
+                title: '¿Desea dar de baja la tarjeta?',
                 text: "Esta acción no se podrá revertir",
                 icon: 'warning',
                 showCancelButton: true,

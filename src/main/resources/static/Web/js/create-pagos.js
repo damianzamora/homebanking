@@ -33,7 +33,7 @@ const app = Vue.createApp({
         realizarPago(){
             console.log(this.tarjetaSeleccionada)
             Swal.fire({
-                title: 'Desea realizar el pago?',
+                title: '¿Desea realizar el pago?',
                 text: "",
                 icon: 'warning',
                 showCancelButton: true,

@@ -27,7 +27,7 @@ const app = Vue.createApp({
         CrearTransferencia(){
             
             Swal.fire({
-                title: 'Desea realizar la transferencia?',
+                title: '¿Desea realizar la transferencia?',
                 text: "Una vez realizada, no se podrá revertir",
                 icon: 'warning',
                 showCancelButton: true,

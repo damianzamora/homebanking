@@ -78,7 +78,7 @@ const app = Vue.createApp({
         CrearSolicitudPrestamo(){
             
             Swal.fire({
-                title: 'Desea pedir el prestamo?',
+                title: '¿Desea pedir el prestamo?',
                 text: "Una vez realizada, no se podra revertir",
                 icon: 'warning',
                 showCancelButton: true,

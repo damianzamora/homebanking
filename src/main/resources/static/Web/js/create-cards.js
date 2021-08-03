@@ -21,7 +21,7 @@ const app = Vue.createApp({
     
         CrearTarjeta(){
             Swal.fire({
-                title: 'Desea crear la Tarjeta?',
+                title: '¿Desea crear la Tarjeta?',
                 text: "",
                 icon: 'warning',
                 showCancelButton: true,

@@ -19,28 +19,57 @@ const app = Vue.createApp({
     methods:{
         
         EliminarCuenta(cuenta){
-            Swal.fire({
-                title: 'Desea eliminar la Cuenta?',
-                text: "Esta acción no se podrá revertir",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    axios.post('/api/clients/current/Deleteaccounts',
-            	    "number="+cuenta.number,
-            	    {headers:{'content-type':'application/x-www-form-urlencoded'}})
-                  .then(res => Swal.fire(
-                   'Cuenta eliminada con éxito!',
-                    'vaya a la sección "Crear Cuentas" para solicitar otra.',
-                    'success',))
-			      .then(response => location.reload())
-                .catch(res => Swal.fire(res.response.data,"Intente nuevamente","error"))
-                  
-                }
-              })   
+            if(cuenta.balance>0){
+                Swal.fire({
+                    title: 'Usted tiene saldo en la cuenta !! ',
+                    text: "¿De todas formas desea eliminar la Cuenta?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.post('/api/clients/current/Deleteaccounts',
+                        "number="+cuenta.number,
+                        {headers:{'content-type':'application/x-www-form-urlencoded'}})
+                    .then(res => Swal.fire(
+                    'Cuenta eliminada con éxito!',
+                        'vaya a la sección "Crear Cuentas" para solicitar otra.',
+                        'success',))
+                    .then(response => location.reload())
+                    .catch(res => Swal.fire(res.response.data,"Intente nuevamente","error"))
+                    
+                    }
+                })       
+
+            }
+            else
+            {
+                    Swal.fire({
+                        title: '¿Desea eliminar la Cuenta?',
+                        text: "Esta acción no se podrá revertir",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            axios.post('/api/clients/current/Deleteaccounts',
+                            "number="+cuenta.number,
+                            {headers:{'content-type':'application/x-www-form-urlencoded'}})
+                        .then(res => Swal.fire(
+                        'Cuenta eliminada con éxito!',
+                            'vaya a la sección "Crear Cuentas" para solicitar otra.',
+                            'success',))
+                        .then(response => location.reload())
+                        .catch(res => Swal.fire(res.response.data,"Intente nuevamente","error"))
+                        
+                        }
+                    })   
+
+            }
 
 
         },

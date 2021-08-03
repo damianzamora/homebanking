@@ -32,7 +32,7 @@ const app = Vue.createApp({
         cambiarEmail(){
             
             Swal.fire({
-                title: 'Desea cambiar el mail ?',
+                title: '¿Desea cambiar el mail ?',
                 text: "usarás este mail para iniciar sesión",
                 icon: 'warning',
                 showCancelButton: true,
@@ -60,7 +60,7 @@ const app = Vue.createApp({
         cambiarContraseña(){
             
             Swal.fire({
-                title: 'Desea cambiar la clave ?',
+                title: '¿Desea cambiar la clave ?',
                 text: "usarás esta clave para iniciar sesión",
                 icon: 'warning',
                 showCancelButton: true,
