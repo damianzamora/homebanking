@@ -74,8 +74,6 @@ public class PagoController {
             return new ResponseEntity<>("Tarjeta inexistente", HttpStatus.FORBIDDEN);
         }
 
-
-
         Card card= cardRepository.findByNumber(cardNumber);
         if(card.getThruDate().isBefore(LocalDate.now())){
             return new ResponseEntity<>("La tarjeta esta vencida,pruebe con otra",HttpStatus.FORBIDDEN);
@@ -86,7 +84,7 @@ public class PagoController {
         }
 
         Client client= clientRepository.findByEmail(authentication.getName());
-        Set<AccountDTO> accounts  = client.getAccounts().stream().map(AccountDTO::new).collect(Collectors.toSet());
+        Set<AccountDTO> accounts  = client.getAccounts().stream().filter(a -> a.isActive()).map(AccountDTO::new).collect(Collectors.toSet());
 
         AccountDTO account = null;
         for (AccountDTO temp : accounts) {
@@ -97,7 +95,7 @@ public class PagoController {
             }
         }
         if (account == null) {
-            return new ResponseEntity<>("No hay fondos disponibles en sus cuentas", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("No tienen fondos disponibles o no tienes una cuenta activa", HttpStatus.FORBIDDEN);
         }
         double balanceActualOrigin= (account.getBalance()-amount);
         transactionRepository.save(new Transaction(TransactionType.DEBITO,amount,cardNumber+" "+description, LocalDateTime.now(),balanceActualOrigin,accountRepository.findByNumber(account.getNumber()),true));
