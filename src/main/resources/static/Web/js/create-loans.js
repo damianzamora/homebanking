@@ -36,9 +36,8 @@ const app = Vue.createApp({
                     .then(res => Swal.fire(
                    'Préstamo creado con exito!',
                     'puede utilizarlo.',
-                    'success',))
-                  
-			    //   .then(response => window.location.href = "loan-application.html")
+                    'success',))                  
+			      .then(res => window.location.href = "prestamos.html")
                   
                   .catch(res=> Swal.fire(res.response.data,"revise la informacion","error"))
                   

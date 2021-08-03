@@ -50,6 +50,7 @@
                            
          <div class="divCreateCard">
                  <div class="CreateCard">
+                    <template v-if="cards.length>0">        
                                     <form @submit.prevent="realizarPago">
                                         <div class="text-center" >                                            
                                             <select class="inputPrestamo" v-model="tarjetaSeleccionada">   
@@ -74,9 +75,17 @@
                                          </div>
                                         <div class="text-center">
                                             <button class="btn btn-secondary btn-sm "  type="submit" >Pagar</button> 
-                                        </div>                                    
-
+                                        </div>                                
                                     </form>
+                    </template>
+                    <template v-else>
+                                    <div class="text-center" >    
+                                        <h5>Para poder realizar un pago, necesita tener una tarjeta !</h5>
+                                        </div>
+                                    <div class="text-center" >
+                                        <h5>Puedes pedir una desde <a href="create-cards.html">aquí</a>.</h5>
+                                    </div>   
+                    </template>                 
                 </div>
         </div>
                   

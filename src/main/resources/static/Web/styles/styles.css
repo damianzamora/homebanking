@@ -602,6 +602,11 @@ margin-left: 4px;
     align-items: center;
 }
 
+.bottonVolver{
+    display: flex;
+    justify-content: flex-end;
+}
+
 @media screen and (min-width: 316px) and (max-width:770px){
     .seccionCards{
         margin-top: 5vh;
