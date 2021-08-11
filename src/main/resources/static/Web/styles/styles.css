@@ -18,6 +18,7 @@ main{
     
 header{
     height: 20%;
+    background-color: lightgray;
 }   
 
 footer{
@@ -88,6 +89,7 @@ select{
     display: flex;
     height: 100%;
     width: 100%;
+    background-color: rgb(222,210,210,255);
 }
 
 .divTable{

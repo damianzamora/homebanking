@@ -17,6 +17,8 @@ public class ClientDTO {
     private Set<ClientLoanDTO> loans = new HashSet<>();
     private Set<CardDTO> cards = new HashSet<>();
     private Set<PagoDTO> pagos = new HashSet<>();
+
+
     public ClientDTO() {
     }
 

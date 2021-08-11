@@ -40,7 +40,7 @@ public class HomebankingApplication {
 			LocalDateTime today = LocalDateTime.now();
 			LocalDateTime tomorrow = today.plusDays(1);
 			Account account1 =accountrepository.save(new Account("VIN001",today,"Ahorro", 5000.0,true,client1));
-			Account account2 =accountrepository.save(new Account("VIN002",tomorrow,"Corriente", 7500.0,true,client1));
+			Account account2 =accountrepository.save(new Account("VIN002",tomorrow,"Corriente", 8500.0,true,client1));
 			Account account3 =accountrepository.save(new Account("VIN003",tomorrow,"Ahorro", 17500.0,true,client2));
 			Account account4 =accountrepository.save(new Account("VINADMIN",tomorrow,"Ahorro", 9999.0,true,admin));
 			Loan loan1 = loanrepository.save(new Loan("Hipotecario" , 500000.,15.00, List.of(12,24,36,48,60)));
